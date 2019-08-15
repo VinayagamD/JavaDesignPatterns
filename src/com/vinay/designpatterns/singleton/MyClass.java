@@ -2,17 +2,18 @@ package com.vinay.designpatterns.singleton;
 
 public class MyClass {
 
-    private static MyClass uniqueInstance;
+    // Eagerly creating singleton class
+    private static MyClass uniqueInstance = new MyClass();
     String name;
 
     private MyClass() {
     }
 
-    public static synchronized MyClass getInstance(){
-        // Adding the synchronized keyword makes our singleton thread safe.
-       if(uniqueInstance == null){
+    public static  MyClass getInstance(){
+        // Adding the synchronized keyword makes our singleton thread safe. Beware, though!
+       /*if(uniqueInstance == null){
            uniqueInstance = new MyClass();
-       }
+       }*/
         return uniqueInstance;
     }
 }
